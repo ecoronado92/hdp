@@ -1,1 +1,2 @@
-# This is an implementation of Hierarchical Latent Dirichlet Allocation
+# HLDA
+This is an implementation of Hierarchical Latent Dirichlet Allocation
