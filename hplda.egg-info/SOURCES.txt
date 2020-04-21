@@ -1,8 +1,0 @@
-README.md
-setup.py
-hplda/__init__.py
-hplda.egg-info/PKG-INFO
-hplda.egg-info/SOURCES.txt
-hplda.egg-info/dependency_links.txt
-hplda.egg-info/not-zip-safe
-hplda.egg-info/top_level.txt
