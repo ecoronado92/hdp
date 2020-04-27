@@ -1,6 +1,6 @@
 from setuptools import setup
 
-setup(name='hplda',
+setup(name='hpd',
       version='0.3',
       description='Implementation of Hierarchical LDA',
       url='http://github.com/datadiarist/hplda',
