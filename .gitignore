@@ -3,3 +3,4 @@ hdp/__*
 .DS*
 hdp/.DS*
 .ipy*
+.DS_Store
