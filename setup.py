@@ -3,7 +3,7 @@ from setuptools import setup, Extension
 import os
 
 cpp_path = './src/lib'
-#cpp_path = './lib'
+
 
 cpp_args = ['-std=c++11'] 
 
