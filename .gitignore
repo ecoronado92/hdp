@@ -1,0 +1,4 @@
+hdp/.*
+hdp/__*
+.DS*
+hdp/.DS*
