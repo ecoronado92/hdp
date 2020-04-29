@@ -1,3 +1,4 @@
+src/*.so
 hdp/.*
 hdp/__*
 .DS*
@@ -7,3 +8,7 @@ hdp/.DS*
 build/
 dist/
 *.so
+report/.hdp_preproc.cpp.cppimporthash
+report/.rendered.hdp_preproc.cpp
+report/__pycache__/
+report/eigen/
