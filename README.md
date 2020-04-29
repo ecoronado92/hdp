@@ -7,6 +7,16 @@ The `hdp` package provides tools to set-up and train a Hierarchical Dirichlet Pr
 - [API](#api)
 
 ## Installation
+> Requires Python >=3.3
+
+To install, open a terminal 
+```
+pip install hdp
+```
+or 
+```
+pip3 install hdp
+```
 
 ## Getting Started
 
