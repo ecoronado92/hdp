@@ -2,3 +2,4 @@ hdp/.*
 hdp/__*
 .DS*
 hdp/.DS*
+.ipy*
