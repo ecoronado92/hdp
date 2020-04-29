@@ -14,7 +14,7 @@ hdp_cpp = cppimport.imp("hdp_funcs")
 ########### HDP ALGORITHM ##########
 ##########################################
 
-def hdp_optimized(docs, voca, gamma, alpha, beta, epochs=1):
+def run_hdp(docs, voca, gamma, alpha, beta, epochs=1):
     '''Wrapper function to run the HDP inference algorithm'''
     
     #### INITIALIZE PARAMETERS #####
