@@ -1,9 +1,0 @@
-README.md
-setup.py
-hpd.egg-info/PKG-INFO
-hpd.egg-info/SOURCES.txt
-hpd.egg-info/dependency_links.txt
-hpd.egg-info/not-zip-safe
-hpd.egg-info/top_level.txt
-hplda/__init__.py
-hplda/data_preproc.py

@@ -4,3 +4,6 @@ hdp/__*
 hdp/.DS*
 .ipy*
 .DS_Store
+build/
+dist/
+*.so
