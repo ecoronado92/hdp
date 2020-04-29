@@ -1,95 +1,62 @@
-{
- "cells": [
-  {
-   "cell_type": "code",
-   "execution_count": null,
-   "metadata": {},
-   "outputs": [],
-   "source": [
-    "import numpy as np\n",
-    "from scipy.special import gammaln\n",
-    "import data_preproc\n",
-    "from data_preproc import data_preproc\n",
-    "import string\n",
-    "from gensim.test.utils import common_texts\n",
-    "from gensim.corpora.dictionary import Dictionary\n",
-    "import gensim\n",
-    "from gensim.models import LdaModel\n",
-    "from gensim.test.utils import common_corpus\n",
-    "import matplotlib.pyplot as plt\n",
-    "from gensim.models import HdpModel\n",
-    "import random\n",
-    "\n",
-    "\n",
-    "##### FUNCTIONS ######\n",
-    "\n",
-    "# Function to reconvert docs back into words (the format the gensim likes)\n",
-    "def back_to_words(docs, vocab):\n",
-    "    return [[vocab[i] for i in j] for j in docs]\n",
-    "\n",
-    "# Takes doc_topic distibution (list of tuples of topic_idx and proportion) and returns topic-length array with props in topic_idx and zeros elsewhere\n",
-    "def special_array(doc, num_topics):\n",
-    "    \n",
-    "    topic_idx = [i[0] for i in doc]\n",
-    "    props = [i[1] for i in doc] \n",
-    "    arr = np.zeros(num_topics)\n",
-    "    \n",
-    "    arr[topic_idx] = props\n",
-    "    \n",
-    "    return(arr)\n",
-    "\n",
-    "def model_to_dist(model, common_corpus, common_dictionary):\n",
-    "    '''Takes Gensim LDA Model and common corpus and dictionary objects and returns doc-topic distribution and word-topic distribution'''\n",
-    "    \n",
-    "    doc_topic_dist = [lda.get_document_topics(item) for item in common_corpus]\n",
-    "    doc_topic_dist = [special_array(i, topic_num) for i in doc_topic_dist]\n",
-    "    doc_topic_dist = np.vstack(doc_topic_dist)\n",
-    "    \n",
-    "    word_topic_dist = [lda.get_term_topics(i, minimum_probability = 1e-4) for i in range(len(common_dictionary))]\n",
-    "    word_topic_dist = [special_array(word, topic_num) for word in word_topic_dist]\n",
-    "    word_topic_dist = np.vstack(word_topic_dist)\n",
-    "    \n",
-    "    return doc_topic_dist, word_topic_dist\n",
-    "\n",
-    "\n",
-    "def perplex_func(doc_topic_dist, word_topic_dist, corpus_key):\n",
-    "\n",
-    "    LL = 0\n",
-    "    N = 0\n",
-    "    \n",
-    "    word_prob_lst = []\n",
-    "    \n",
-    "    for doc_dist, word_idx in zip(doc_topic_dist, corpus_key):\n",
-    "    \n",
-    "        N += len(word_idx)\n",
-    "        \n",
-    "        word_prob_lst.append(word_topic_dist[word_idx] @ doc_dist)\n",
-    "        \n",
-    "        word_probs = np.hstack(word_prob_lst)\n",
-    "        \n",
-    "    return np.exp(-np.sum(np.log(word_probs[word_probs!=0]))/N)"
-   ]
-  }
- ],
- "metadata": {
-  "kernelspec": {
-   "display_name": "Python 3",
-   "language": "python",
-   "name": "python3"
-  },
-  "language_info": {
-   "codemirror_mode": {
-    "name": "ipython",
-    "version": 3
-   },
-   "file_extension": ".py",
-   "mimetype": "text/x-python",
-   "name": "python",
-   "nbconvert_exporter": "python",
-   "pygments_lexer": "ipython3",
-   "version": "3.7.3"
-  }
- },
- "nbformat": 4,
- "nbformat_minor": 2
-}
+import numpy as np
+from scipy.special import gammaln
+import data_preproc
+from data_preproc import data_preproc
+import string
+from gensim.test.utils import common_texts
+from gensim.corpora.dictionary import Dictionary
+import gensim
+from gensim.models import LdaModel
+from gensim.test.utils import common_corpus
+import matplotlib.pyplot as plt
+from gensim.models import HdpModel
+import random
+
+
+##### FUNCTIONS ######
+
+# Function to reconvert docs back into words (the format the gensim likes)
+def back_to_words(docs, vocab):
+    return [[vocab[i] for i in j] for j in docs]
+
+# Takes doc_topic distibution (list of tuples of topic_idx and proportion) and returns topic-length array with props in topic_idx and zeros elsewhere
+def special_array(doc, num_topics):
+    
+    topic_idx = [i[0] for i in doc]
+    props = [i[1] for i in doc] 
+    arr = np.zeros(num_topics)
+    
+    arr[topic_idx] = props
+    
+    return(arr)
+
+def model_to_dist(model, common_corpus, common_dictionary):
+    '''Takes Gensim LDA Model and common corpus and dictionary objects and returns doc-topic distribution and word-topic distribution'''
+    
+    doc_topic_dist = [lda.get_document_topics(item) for item in common_corpus]
+    doc_topic_dist = [special_array(i, topic_num) for i in doc_topic_dist]
+    doc_topic_dist = np.vstack(doc_topic_dist)
+    
+    word_topic_dist = [lda.get_term_topics(i, minimum_probability = 1e-4) for i in range(len(common_dictionary))]
+    word_topic_dist = [special_array(word, topic_num) for word in word_topic_dist]
+    word_topic_dist = np.vstack(word_topic_dist)
+    
+    return doc_topic_dist, word_topic_dist
+
+
+def perplex_func(doc_topic_dist, word_topic_dist, corpus_key):
+
+    LL = 0
+    N = 0
+    
+    word_prob_lst = []
+    
+    for doc_dist, word_idx in zip(doc_topic_dist, corpus_key):
+    
+        N += len(word_idx)
+        
+        word_prob_lst.append(word_topic_dist[word_idx] @ doc_dist)
+        
+        word_probs = np.hstack(word_prob_lst)
+        
+    return np.exp(-np.sum(np.log(word_probs[word_probs!=0]))/N)
