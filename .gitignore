@@ -1,9 +1,8 @@
+src/hdp/__*
 report/.hdp_funcs.cpp.cppimporthash
 report/.rendered.hdp_funcs.cpp
 src/hdp.egg-info/*
 src/*.so
-hdp/.*
-hdp/__*
 .DS*
 hdp/.DS*
 .ipy*
@@ -15,3 +14,4 @@ report/.hdp_preproc.cpp.cppimporthash
 report/.rendered.hdp_preproc.cpp
 report/__pycache__/
 report/eigen/
+tests/__*
