@@ -61,3 +61,32 @@ def perplex_func(doc_topic_dist, word_topic_dist, corpus_key):
         word_probs = np.hstack(word_prob_lst)
         
     return np.exp(-np.sum(np.log(word_probs[word_probs!=0]))/N)
+
+
+def doc_topic_key_to_distribution(doc_topic_key, topic_idx):
+
+    def spec_array(test_arr, topic_id):
+        
+        thing = np.zeros(max(topic_id))
+        
+        arr_idx = np.array([i-1 for i in test_arr[1:,0] if i < (topic_id[-1]+1)])
+        
+        contents = test_arr[:,1][np.where(test_arr[:,1][test_arr[:,0] < (topic_id[-1]+1)] > 0)[0]]
+        
+        if len(arr_idx) > len(contents):
+            arr_idx = arr_idx[:len(contents)]
+        
+        thing[arr_idx] = contents
+        
+        return thing/np.sum(thing)
+    
+    doc_dist = [spec_array(item, topic_idx) for item in doc_topic_key]
+    doc_dist = np.vstack(doc_dist)
+    doc_dist = doc_dist[:,[i-1 for i in topic_idx[1:]]]
+    
+    return doc_dist
+
+
+def n_kv_to_word_dist(n_kv, topic_idx):
+    word_dist = [idx for idx in (n_kv[:,topic_idx[1:]] - .5)/np.sum(n_kv[:,topic_idx[1:]]-.5)]
+    return np.vstack(word_dist)
