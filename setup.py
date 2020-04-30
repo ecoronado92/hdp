@@ -27,16 +27,27 @@ ext_modules = [
 ]
 
 setup(name='hdp',
-      version='0.3',
+      version='0.1.0',
       description='Implementation of Hierarchical LDA',
       url='http://github.com/datadiarist/hplda',
       author='Andrew and Eduardo',
       author_email='andrew.carr@duke.edu',
       license='MIT',
+      classifiers=[
+        'Programming Language :: Python :: 3',
+        'License :: OSI Approved :: MIT License',
+        'Topic :: Text Processing :: Linguistic',
+          'Operating System :: OS Independent'
+      ],
+      keywords='topic non-parametric modeling nlp',
+      python_requires = '>=3.0',
       package_dir = {'': 'src'},
       packages=['hdp'],
       zip_safe=False,
-      install_requires=['pybind11', 
-                        'pandas', 'scipy', 'numpy'],
+      install_requires=[
+          'pybind11', 
+          'pandas', 
+          'scipy', 
+          'numpy'],
       ext_modules=ext_modules
       )

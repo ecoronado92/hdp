@@ -3,13 +3,12 @@
 
 import os
 
-lib_path = './src/lib'
+# Set up paths
+lib_path = './lib'
 modules ={'pybind11': 'https://github.com/pybind/pybind11.git',
          'eigen': 'https://gitlab.com/libeigen/eigen.git'}
 
-if not os.path.isdir(lib_path):
-    os.path.mkdir(libpath)
-
+# clone paths to lib directory
 for k, g in modules.items():
     m_path = os.path.join(lib_path, k)
     

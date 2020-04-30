@@ -1,3 +1,0 @@
-hdp
-hdp_funcs
-hdp_preproc

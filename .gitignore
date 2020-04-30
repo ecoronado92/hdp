@@ -1,3 +1,4 @@
+src/hdp.egg-info/*
 src/*.so
 hdp/.*
 hdp/__*
