@@ -64,7 +64,9 @@ def tf(in_docs):
     v_idx = filt_df[:, filt_df.shape[1]-1].astype(int) # get vocab indexes
     vocab = np.array(v)[v_idx]
     
-    return vocab, filt_df[:,1:filt_df.shape[1]]
+    filt_df = np.delete(filt_df, filt_df.shape[1]-1, axis=1)
+    
+    return vocab, filt_df
 
 
 

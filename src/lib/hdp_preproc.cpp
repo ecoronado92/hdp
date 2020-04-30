@@ -149,8 +149,11 @@ Eigen::MatrixXf tf_cpp(std::vector<std::vector<std::string>>& stemmed_docs,
         
         // Sum total word count accross documents
         double cnt = 0;
-        cnt += tf.row(i).sum();
-        
+        for (int j=0; j < ncol; ++j){
+            if (tf(i,j) > 0.0)
+                cnt +=1;
+        }
+                
         // Filtering criteria
         if(tf.row(i).sum() > 3.0 && cnt/cols < 0.5){
             filt_tf.row(i) = tf.row(i);
