@@ -48,6 +48,9 @@ setup(name='hdp',
           'pybind11', 
           'pandas', 
           'scipy', 
-          'numpy'],
-      ext_modules=ext_modules
+          'numpy',
+          'nltk'],
+      ext_modules=ext_modules,
+      test_suite='nose.collector',
+      tests_require=['nose']
       )
