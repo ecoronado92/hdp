@@ -1,7 +1,6 @@
 import numpy as np
 from scipy.special import gammaln
-import data_preproc
-from data_preproc import data_preproc
+from text_prep import run_preprocess
 import string
 from gensim.test.utils import common_texts
 from gensim.corpora.dictionary import Dictionary
@@ -30,14 +29,14 @@ def special_array(doc, num_topics):
     
     return(arr)
 
-def model_to_dist(model, common_corpus, common_dictionary):
+def model_to_dist(model, common_corpus, common_dictionary, topic_num):
     '''Takes Gensim LDA Model and common corpus and dictionary objects and returns doc-topic distribution and word-topic distribution'''
     
-    doc_topic_dist = [lda.get_document_topics(item) for item in common_corpus]
+    doc_topic_dist = [model.get_document_topics(item) for item in common_corpus]
     doc_topic_dist = [special_array(i, topic_num) for i in doc_topic_dist]
     doc_topic_dist = np.vstack(doc_topic_dist)
     
-    word_topic_dist = [lda.get_term_topics(i, minimum_probability = 1e-4) for i in range(len(common_dictionary))]
+    word_topic_dist = [model.get_term_topics(i, minimum_probability = 1e-4) for i in range(len(common_dictionary))]
     word_topic_dist = [special_array(word, topic_num) for word in word_topic_dist]
     word_topic_dist = np.vstack(word_topic_dist)
     
