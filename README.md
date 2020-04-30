@@ -88,7 +88,7 @@ For more information on how to run these functions see the [api](#api) section b
 
 ## API
 
-#### run_preprocess(file_url)
+### run_preprocess(file_url)
 
 **Parameters**
 
@@ -106,7 +106,7 @@ For more information on how to run these functions see the [api](#api) section b
 
 
 
-#### run_hdp(docs, vocab, gamma, alpha, beta, epochs)
+### run_hdp(docs, vocab, gamma, alpha, beta, epochs)
 
 Computes inference on document corpus and vocabulary over a user defined number of epochs (iterations). Additionally, user must provide prior distribution hyperparameters similar to those needed in LDA
 
