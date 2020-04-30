@@ -3,7 +3,6 @@
 
 
 import numpy as np
-import cppimport
 
 from scipy.special import gammaln
 
@@ -278,7 +277,7 @@ def sample_k(j, tbl,  doc_j, topic_idx, n_jtw, n_kv, m_k, beta, V, gamma):
         m_k[new_k] += 1
 
         # Rearrange individual word-topic counts based on potential new_k reassignment
-        doc_j, n_kv = rearranging_k_counts(j,tbl, new_k, doc_j, n_jtw, n_kv, beta)
+        doc_j, n_kv = rearranging_k_counts(j,tbl, new_k, doc_j, n_jtw, n_kv)
 
     return doc_j, topic_idx, n_kv, m_k
 
@@ -347,7 +346,7 @@ def remove_Xvec_ji(tbl, doc_j, topic_idx, m_k):
     return doc_j, topic_idx, m_k
 
 
-def rearranging_k_counts(j, tbl, new_k, doc_j, n_jtw, n_kv, beta):
+def rearranging_k_counts(j, tbl, new_k, doc_j, n_jtw, n_kv):
     '''For sampled k, rearrange counts for topics accordingly (i.e. if a new k was selected, subtract
        from previous k and add to new k in word-topic matrix)'''
     
@@ -367,7 +366,6 @@ def rearranging_k_counts(j, tbl, new_k, doc_j, n_jtw, n_kv, beta):
     return doc_j, n_kv
 
 
-# In[10]:
 
 
 
