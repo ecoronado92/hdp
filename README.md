@@ -6,6 +6,7 @@ The `hdp` package provides tools to set-up and train a Hierarchical Dirichlet Pr
 - [Installation](#installation)
 - [Getting Started](#getting-started)
 - [API](#api)
+- [Testing](#testing)
 
 ## Dependencies
 
@@ -148,3 +149,13 @@ Computes inference on document corpus and vocabulary over a user defined number 
 
 - **m_k**:array
     - Number of tables per topic
+
+
+## Testing
+
+Unit tests can be run using the following command on terminal in the package root folder
+
+```
+python3 setup.py test
+
+```
