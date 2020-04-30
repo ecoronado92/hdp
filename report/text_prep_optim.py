@@ -11,8 +11,8 @@ from nltk.stem import SnowballStemmer as stemmer
 from nltk.corpus import stopwords
 import nltk.stem
 
-nltk.download('wordnet')
-nltk.download('stopwords')
+nltk.download('wordnet', quiet=True)
+nltk.download('stopwords', quiet=True)
 stemmer = stemmer("english")
 
 ## Import C++ functions

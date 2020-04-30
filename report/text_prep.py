@@ -14,8 +14,8 @@ import nltk.stem
 
 from collections import Counter
 
-nltk.download('wordnet')
-nltk.download('stopwords')
+nltk.download('wordnet', quiet=True)
+nltk.download('stopwords', quiet=True)
 stemmer = stemmer("english")
 
 
