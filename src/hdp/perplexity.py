@@ -1,6 +1,6 @@
 import numpy as np
 from scipy.special import gammaln
-from text_prep import run_preprocess
+from hdp.text_prep import run_preprocess
 import string
 from gensim.test.utils import common_texts
 from gensim.corpora.dictionary import Dictionary
