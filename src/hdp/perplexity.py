@@ -1,16 +1,17 @@
 import numpy as np
 import pandas as pd
-from scipy.special import gammaln
-from text_prep import run_preprocess
 import string
+import gensim
+import matplotlib.pyplot as plt
+import random
+
+from scipy.special import gammaln
+from hdp.text_prep import run_preprocess
 from gensim.test.utils import common_texts
 from gensim.corpora.dictionary import Dictionary
-import gensim
 from gensim.models import LdaModel
 from gensim.test.utils import common_corpus
-import matplotlib.pyplot as plt
 from gensim.models import HdpModel
-import random
 
 
 ##### FUNCTIONS ######
