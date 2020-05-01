@@ -74,14 +74,18 @@ Subsequently, you can generate inferences using the `hdp` function with the foll
 ```
 import numpy as np
 
-it = 5
+# number ofof iteration
+it = 5 
 
 # Hyperparameters (user-defined)
-beta = 0.5 # topic concentration (LDA)
-alpha = np.random.gamma(1,1) # DP mixture hyperparam
-gamma = np.random.gamma(1,1) # Base DP hyperparam
+
+beta = 0.5                   # topic concentration (LDA), can be user-defined
+alpha = np.random.gamma(1,1) # DP mixture hyperparam (or user-defined float > 0)
+gamma = np.random.gamma(1,1) # Base DP hyperparam (or user-defined float >0)
+
 
 doc_arrays, topic_idx, n_kv, m_k = run_hdp(docs, vocab, gamma, alpha, beta, epochs=it)
+
 ```
 
 For more information on how to run these functions see the [api](#api) section below or visit the `./report` folder which provides context and theory behind the implementation.
