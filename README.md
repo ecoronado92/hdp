@@ -83,7 +83,7 @@ alpha = np.random.gamma(1,1) # DP mixture hyperparam (or user-defined float > 0)
 gamma = np.random.gamma(1,1) # Base DP hyperparam (or user-defined float >0)
 
 
-doc_arrays, topic_idx, n_kv, m_k = run_hdp(docs, vocab, gamma, alpha, beta, epochs=it)
+doc_arrays, topic_idx, n_kv, m_k, perplex = run_hdp(docs, vocab, gamma, alpha, beta, epochs=it)
 
 ```
 
@@ -152,6 +152,9 @@ Computes inference on document corpus and vocabulary over a user defined number 
 
 - **m_k**:array
     - Number of tables per topic
+
+- **perplex**:list
+    - Perplexity score computed at end of each epoch
 
 
 ## Testing
