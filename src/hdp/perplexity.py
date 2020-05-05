@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-#### Code implementation inspired by https://github.com/shuyo
 #### Optimized by Eduardo Coronado and Andrew Carr, Duke University
 
 import numpy as np
