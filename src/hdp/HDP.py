@@ -1,10 +1,13 @@
 #!/usr/bin/env python
 # coding: utf-8
 
+#### Code implementation inspired by https://github.com/shuyo
+#### Optimized by Eduardo Coronado and Andrew Carr, Duke University
 
 import numpy as np
 
 from scipy.special import gammaln
+from hdp.perplexity import get_perplexity
 
 import hdp_funcs as hdp_cpp
 
@@ -38,9 +41,11 @@ def run_hdp(docs, voca, gamma, alpha, beta, epochs=1):
     
     x_ji = docs # list of sublists
     
+    perplex =[]
+    
     ##### INFERENCE LOOPS ######
     for z in range(epochs):
-    
+        
         ### Infer t
         for j, x_i in enumerate(x_ji):
             doc_j = doc_arrays[j]
@@ -59,9 +64,12 @@ def run_hdp(docs, voca, gamma, alpha, beta, epochs=1):
                 doc_j, topic_idx, n_kv, m_k = sample_k(j, tbl, doc_j, topic_idx, n_jtw, n_kv, m_k, beta, V, gamma)
 
             doc_arrays[j] = doc_j
-            
+        
+        
+        perplex.append(get_perplexity(x_ji, doc_arrays, topic_idx, n_kv, m_k, beta, alpha, gamma, V))
 
-    return doc_arrays, topic_idx, n_kv, m_k
+
+    return doc_arrays, topic_idx, n_kv, m_k, perplex
 
 
 

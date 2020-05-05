@@ -46,7 +46,6 @@ chmod 755 ./INSTALL.sh
 or individuallyou run the following commands
 
 ```
-python3 setup.py build_ext -i
 python3 setup.py build
 python3 setup.py install
 ```
@@ -58,8 +57,8 @@ Let's get started by importing the package and it's main functions `run_preproce
 ```
 import hdp
 
-from hdp import run_preprocess
-from hdp import run_hdp
+from hdp.text_prep import run_preprocess
+from hdp.HDP import run_hdp
 ```
 
 You can test these functions with some test data in the `./data` folder. For example, to preprocess files and obtain the corpus vocabulary and an inference-ready document structure use the following commands
