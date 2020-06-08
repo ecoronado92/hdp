@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
+### Adapted from https://github.com/shuyo/iir/blob/master/lda/hdplda2.py
 #### Optimized by Eduardo Coronado and Andrew Carr, Duke University
 
 import numpy as np

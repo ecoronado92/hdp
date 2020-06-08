@@ -1,5 +1,7 @@
 # hdp - Hierarchical Dirichlet Process (or Hierarichical LDA)
 
+Authors: Eduardo Coronado and Andrew Carr (Duke University)
+
 The `hdp` package provides tools to set-up and train a Hierarchical Dirichlet Process (HDP) for topic modeling. This is similar to a Latent Dirichlet Allocation (LDA) model, with one major difference -  HDPs are non-parametric in that the topics are learned from the data rather than user-specified.
 
 - [Dependencies](#dependencies)
@@ -73,7 +75,7 @@ Subsequently, you can generate inferences using the `hdp` function with the foll
 ```
 import numpy as np
 
-# number ofof iteration
+# number of iteration
 it = 5 
 
 # Hyperparameters (user-defined)
